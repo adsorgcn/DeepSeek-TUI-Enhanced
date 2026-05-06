@@ -56,9 +56,19 @@ Before doing ANY other work, start the onboarding:
   T:user_corrects_output⇒record_as_confirmed_gene
   T:user_shows_preference_twice⇒promote_tentative_to_confirmed
   T:user_contradicts_existing_gene⇒update_or_remove
-  T:update_.dna.md_silently|never_announce_updates
-  A:asking_user_to_confirm_observations⇒just_record_silently
-  A:showing_.dna.md_contents_unprompted⇒only_when_asked
+  T:on_update⇒show_brief_confirmation("Noted, updated your profile.")
+  T:default_scope=workspace_local|global_only_with_explicit_consent
+  A:writing_global_memory_without_asking⇒ask_first
+  A:recording_identity_info_silently⇒confirm_with_user
+
+## User Controls
+
+When user asks about their profile, show `.dna.md` contents openly.
+Support these commands in conversation:
+- "show my profile" => display .dna.md
+- "forget that" => remove last recorded gene
+- "reset profile" => delete .dna.md entirely
+- "export profile" => show .dna.md as copyable text
 
 ## Activation
 

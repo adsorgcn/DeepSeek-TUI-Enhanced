@@ -8,38 +8,29 @@ This fork of [Hmbown/DeepSeek-TUI](https://github.com/Hmbown/DeepSeek-TUI) adds 
 
 ## Install
 
-`deepseek` is distributed as Rust binaries: the dispatcher command
-(`deepseek`) and the companion TUI runtime (`deepseek-tui`). Pick whichever
-install path you already use; they all put the same commands on your `PATH`.
-The npm package is an installer/wrapper for the release binaries, not the
-agent runtime itself.
+This is an enhanced fork. Install from source to get the full skill set:
 
 ```bash
-# 1. npm — easiest if you already use Node. The package downloads the
-#    matching prebuilt Rust binaries from GitHub Releases.
-npm install -g deepseek-tui
-
-# 2. Cargo — no Node needed.
-cargo install deepseek-tui-cli --locked   # `deepseek` (entry point)
-cargo install deepseek-tui     --locked   # `deepseek-tui` (TUI binary)
-
-# 3. Homebrew — macOS package manager.
-brew tap Hmbown/deepseek-tui
-brew install deepseek-tui
-
-# 4. Direct download — no package manager or toolchain.
-#    https://github.com/Hmbown/DeepSeek-TUI/releases
-#    Prebuilt for Linux x64/ARM64, macOS x64/ARM64, Windows x64.
+# Clone and build from source (recommended)
+git clone https://github.com/adsorgcn/DeepSeek-TUI-Enhanced.git
+cd DeepSeek-TUI-Enhanced
+cargo install --path crates/cli --locked    # `deepseek` (entry point)
+cargo install --path crates/tui --locked    # `deepseek-tui` (TUI binary)
 ```
 
-> In mainland China, speed up the npm path with
-> `--registry=https://registry.npmmirror.com`, or use the
-> [Cargo mirror](#china--mirror-friendly-installation) below.
+Or if you already have the original `deepseek-tui` installed and just want the enhanced skills:
+
+```bash
+# Install only the enhanced skill files into your existing setup
+git clone https://github.com/adsorgcn/DeepSeek-TUI-Enhanced.git
+cp -r DeepSeek-TUI-Enhanced/crates/tui/assets/skills/* ~/.deepseek/skills/
+```
+
+> Forked from [Hmbown/DeepSeek-TUI](https://github.com/Hmbown/DeepSeek-TUI).
+> The original runtime, TUI, and tool suite are theirs.
+> The structured behavioral skill layer is ours.
 
 [![CI](https://github.com/Hmbown/DeepSeek-TUI/actions/workflows/ci.yml/badge.svg)](https://github.com/Hmbown/DeepSeek-TUI/actions/workflows/ci.yml)
-[![npm](https://img.shields.io/npm/v/deepseek-tui)](https://www.npmjs.com/package/deepseek-tui)
-[![crates.io](https://img.shields.io/crates/v/deepseek-tui-cli?label=crates.io)](https://crates.io/crates/deepseek-tui-cli)
-[DeepWiki project index](https://deepwiki.com/Hmbown/DeepSeek-TUI)
 
 ![DeepSeek TUI screenshot](assets/screenshot.png)
 
@@ -73,7 +64,7 @@ It is built around DeepSeek V4 (`deepseek-v4-pro` / `deepseek-v4-flash`), includ
 
 ### What This Fork Adds
 
-The original ships with 1 skill (skill-creator, 421 lines of natural language). This edition adds 5 skills written as structured behavioral definitions — same intent, ~60% fewer tokens. In a context window under pressure, this matters.
+The original ships with 1 skill (skill-creator, 421 lines of natural language). This edition adds 5 skills written as structured behavioral definitions — same rules, 35-45% fewer tokens, zero interpretation ambiguity. When context is under pressure, every token matters. See [`benchmarks/token-comparison.md`](benchmarks/token-comparison.md) for concrete numbers.
 
 **Before (natural language, 8 lines):**
 ```
@@ -162,7 +153,7 @@ Use a fixed model or fixed thinking level when you want repeatable benchmarking,
 
 ### Linux ARM64 (Raspberry Pi, Asahi, Graviton, HarmonyOS PC)
 
-`npm i -g deepseek-tui` works on glibc-based ARM64 Linux from v0.8.8 onward. You can also download prebuilt binaries from the [Releases page](https://github.com/Hmbown/DeepSeek-TUI/releases) and place them side by side on your `PATH`.
+`npm i -g deepseek-tui` works on glibc-based ARM64 Linux from v0.8.8 onward. You can also download prebuilt binaries from the [Releases page](https://github.com/adsorgcn/DeepSeek-TUI-Enhanced/releases) and place them side by side on your `PATH`.
 
 ### China / Mirror-friendly Installation
 
@@ -185,7 +176,7 @@ cargo install deepseek-tui     --locked   # provides `deepseek-tui`
 deepseek --version
 ```
 
-Prebuilt binaries can also be downloaded from [GitHub Releases](https://github.com/Hmbown/DeepSeek-TUI/releases). Use `DEEPSEEK_TUI_RELEASE_BASE_URL` for mirrored release assets.
+Prebuilt binaries can also be downloaded from [GitHub Releases](https://github.com/adsorgcn/DeepSeek-TUI-Enhanced/releases). Use `DEEPSEEK_TUI_RELEASE_BASE_URL` for mirrored release assets.
 
 ### Windows (Scoop)
 
@@ -206,7 +197,7 @@ Works on any Tier-1 Rust target — including musl, riscv64, FreeBSD, and older 
 #   sudo apt-get install -y build-essential pkg-config libdbus-1-dev
 #   sudo dnf install -y gcc make pkgconf-pkg-config dbus-devel
 
-git clone https://github.com/Hmbown/DeepSeek-TUI.git
+git clone https://github.com/adsorgcn/DeepSeek-TUI-Enhanced.git
 cd DeepSeek-TUI
 
 cargo install --path crates/cli --locked   # requires Rust 1.88+; provides `deepseek`
@@ -441,7 +432,7 @@ This project ships with help from a growing community of contributors:
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md). Pull requests welcome — check the [open issues](https://github.com/Hmbown/DeepSeek-TUI/issues) for good first contributions.
+See [CONTRIBUTING.md](CONTRIBUTING.md). Pull requests welcome — check the [open issues](https://github.com/adsorgcn/DeepSeek-TUI-Enhanced/issues) for good first contributions.
 
 Support: [Buy me a coffee](https://www.buymeacoffee.com/hmbown).
 

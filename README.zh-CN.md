@@ -8,34 +8,29 @@
 
 ## 安装
 
-`deepseek` 是自包含 Rust 二进制——**运行时不依赖 Node.js 或 Python**。
-下面几种方式装出来的是同一套二进制，按你已有的工具链选一个即可：
+本项目是增强分支，从源码构建以获得完整技能集：
 
 ```bash
-# 1. npm —— 已装 Node 的最方便方式。npm 包只是一个下载器，
-#    会从 GitHub Releases 拉取对应平台的预编译二进制，
-#    并不会让 deepseek 本身依赖 Node 运行时。
-npm install -g deepseek-tui
-
-# 2. Cargo —— 无需 Node。
-cargo install deepseek-tui-cli --locked   # `deepseek` 入口
-cargo install deepseek-tui     --locked   # `deepseek-tui` TUI 二进制
-
-# 3. Homebrew —— macOS 包管理器。
-brew tap Hmbown/deepseek-tui
-brew install deepseek-tui
-
-# 4. 直接下载 —— 无需任何工具链。
-#    https://github.com/Hmbown/DeepSeek-TUI/releases
-#    覆盖 Linux x64/ARM64、macOS x64/ARM64、Windows x64
+# 从源码构建（推荐）
+git clone https://github.com/adsorgcn/DeepSeek-TUI-Enhanced.git
+cd DeepSeek-TUI-Enhanced
+cargo install --path crates/cli --locked    # `deepseek` 入口
+cargo install --path crates/tui --locked    # `deepseek-tui` TUI 二进制
 ```
 
-> 中国大陆访问较慢时，npm 可加 `--registry=https://registry.npmmirror.com`，
-> 或使用下方的 [Cargo 镜像](#中国大陆--镜像友好安装)。
+如果已安装原版 `deepseek-tui`，只需增强技能文件：
+
+```bash
+# 只安装增强技能到现有环境
+git clone https://github.com/adsorgcn/DeepSeek-TUI-Enhanced.git
+cp -r DeepSeek-TUI-Enhanced/crates/tui/assets/skills/* ~/.deepseek/skills/
+```
+
+> 基于 [Hmbown/DeepSeek-TUI](https://github.com/Hmbown/DeepSeek-TUI) 分支。
+> 原版运行时、TUI 和工具集归原作者所有。
+> 结构化行为技能层是本项目的增量贡献。
 
 [![CI](https://github.com/Hmbown/DeepSeek-TUI/actions/workflows/ci.yml/badge.svg)](https://github.com/Hmbown/DeepSeek-TUI/actions/workflows/ci.yml)
-[![npm](https://img.shields.io/npm/v/deepseek-tui)](https://www.npmjs.com/package/deepseek-tui)
-[![crates.io](https://img.shields.io/crates/v/deepseek-tui-cli?label=crates.io)](https://crates.io/crates/deepseek-tui-cli)
 
 ![DeepSeek TUI 截图](assets/screenshot.png)
 
@@ -68,7 +63,7 @@ DeepSeek TUI 是一个完全运行在终端里的编程智能体。它让 DeepSe
 
 ### 增强版新增内容
 
-原版内置 1 个技能（skill-creator，421 行自然语言）。增强版新增 5 个结构化行为技能 —— 同样的意图，token 消耗减少约 60%。在上下文紧张时这是决定性优势。
+原版内置 1 个技能（skill-creator，421 行自然语言）。增强版新增 5 个结构化行为技能 -- 同样的规则，token 消耗减少 35-45%，消除解释歧义。上下文紧张时每个 token 都重要。具体数据见 [`benchmarks/token-comparison.md`](benchmarks/token-comparison.md)。
 
 **自然语言写法（8 行）：**
 ```
@@ -139,7 +134,7 @@ deepseek doctor                          # 验证安装
 
 ### Linux ARM64（HarmonyOS 轻薄本、openEuler、Kylin、树莓派、Graviton 等）
 
-从 v0.8.8 起，`npm i -g deepseek-tui` 直接支持 glibc 系的 ARM64 Linux。你也可以从 [Releases 页面](https://github.com/Hmbown/DeepSeek-TUI/releases) 下载预编译二进制，放到 `PATH` 目录中。
+从 v0.8.8 起，`npm i -g deepseek-tui` 直接支持 glibc 系的 ARM64 Linux。你也可以从 [Releases 页面](https://github.com/adsorgcn/DeepSeek-TUI-Enhanced/releases) 下载预编译二进制，放到 `PATH` 目录中。
 
 ### 中国大陆 / 镜像友好安装
 
@@ -162,7 +157,7 @@ cargo install deepseek-tui     --locked   # 提供交互式 TUI 伴随二进制
 deepseek --version
 ```
 
-也可以直接从 [GitHub Releases](https://github.com/Hmbown/DeepSeek-TUI/releases) 下载预编译二进制。`DEEPSEEK_TUI_RELEASE_BASE_URL` 可用于镜像后的 release 资产。
+也可以直接从 [GitHub Releases](https://github.com/adsorgcn/DeepSeek-TUI-Enhanced/releases) 下载预编译二进制。`DEEPSEEK_TUI_RELEASE_BASE_URL` 可用于镜像后的 release 资产。
 
 ### Windows (Scoop)
 
@@ -183,7 +178,7 @@ scoop install deepseek-tui
 #   sudo apt-get install -y build-essential pkg-config libdbus-1-dev
 #   sudo dnf install -y gcc make pkgconf-pkg-config dbus-devel
 
-git clone https://github.com/Hmbown/DeepSeek-TUI.git
+git clone https://github.com/adsorgcn/DeepSeek-TUI-Enhanced.git
 cd DeepSeek-TUI
 
 cargo install --path crates/cli --locked   # 需要 Rust 1.88+；提供 `deepseek`
@@ -420,7 +415,7 @@ description: 当 DeepSeek 需要遵循我的自定义工作流时使用这个技
 
 ## 贡献
 
-欢迎提交 pull request——请先查看 [CONTRIBUTING.md](CONTRIBUTING.md) 并留意[开放 issue](https://github.com/Hmbown/DeepSeek-TUI/issues) 中的好入门任务。
+欢迎提交 pull request——请先查看 [CONTRIBUTING.md](CONTRIBUTING.md) 并留意[开放 issue](https://github.com/adsorgcn/DeepSeek-TUI-Enhanced/issues) 中的好入门任务。
 
 *本项目与 DeepSeek Inc. 无隶属关系。*
 

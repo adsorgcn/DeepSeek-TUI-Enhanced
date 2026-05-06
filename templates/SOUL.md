@@ -26,7 +26,7 @@ Structured behavioral definitions say the same thing in fewer tokens:
   A:approving_without_full_read⇒forbidden
 ```
 
-Same intent, ~60% fewer tokens. In a 1M-token context window under pressure, this matters.
+Same intent, 35-45% fewer tokens, zero interpretation ambiguity. In a 1M-token context window under pressure, this matters.
 
 ## Template
 
