@@ -66,14 +66,9 @@ function detectBinaryRequiredGlibc(filePath) {
 
 function buildFromSourceHint() {
   return [
-    "You can still run DeepSeek TUI by building from source with Cargo:",
+    "You can still run DeepSeek TUI Enhanced by building from source:",
     "",
     "  # Requires Rust 1.88+ (https://rustup.rs)",
-    "  cargo install deepseek-tui-cli --locked   # provides `deepseek`",
-    "  cargo install deepseek-tui     --locked   # provides `deepseek-tui`",
-    "",
-    "Or build from a checkout:",
-    "",
     "  git clone https://github.com/adsorgcn/DeepSeek-TUI-Enhanced.git",
     "  cd DeepSeek-TUI-Enhanced",
     "  cargo install --path crates/cli --locked",
