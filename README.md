@@ -1,6 +1,8 @@
-# DeepSeek TUI
+# DeepSeek TUI — Enhanced Edition
 
-> Terminal coding agent for DeepSeek V4. It runs from the `deepseek` command, streams reasoning blocks, edits local workspaces with approval gates, and includes an auto mode that chooses both model and thinking level per turn.
+> Terminal coding agent for DeepSeek V4 — enhanced with structured behavioral definitions that make sessions survive longer, sub-agents coordinate better, and every instruction cost fewer tokens.
+
+This fork of [Hmbown/DeepSeek-TUI](https://github.com/Hmbown/DeepSeek-TUI) adds structured behavioral skills and project templates designed specifically for DeepSeek-TUI's architecture: sub-agent orchestration, RLM batch analysis, 1M-token context management, and thinking-mode streaming.
 
 [简体中文 README](README.zh-CN.md)
 
@@ -68,6 +70,45 @@ It is built around DeepSeek V4 (`deepseek-v4-pro` / `deepseek-v4-flash`), includ
 - **Localized UI** — `en`, `ja`, `zh-Hans`, `pt-BR` with auto-detection
 - **Live cost tracking** — per-turn and session-level token usage and cost estimates; cache hit/miss breakdown
 - **Skills system** — composable, installable instruction packs from GitHub with no backend service required
+
+### What This Fork Adds
+
+The original ships with 1 skill (skill-creator, 421 lines of natural language). This edition adds 5 skills written as structured behavioral definitions — same intent, ~60% fewer tokens. In a context window under pressure, this matters.
+
+**Before (natural language, 8 lines):**
+```
+When the context window reaches 60%, suggest compaction. When it
+reaches 75%, force compaction before the next tool call. Never let
+it hit 90%. Don't read files one by one in the parent session —
+spawn a sub-agent for that. Don't paste full logs into the parent.
+After compacting, verify that task definitions and decisions survived.
+Batch tool calls — fire 3+ reads per turn instead of one at a time.
+Maximum 3 sequential turns on the same topic before delegating.
+```
+
+**After (structured behavioral definition, same rules):**
+```
+::GENE{context_budget|conf:confirmed|scope:global|priority:P0}
+  T:at_60pct⇒suggest_/compact_to_user
+  T:at_75pct⇒force_compact_before_next_tool_call
+  T:never_let_context_hit_90pct
+  T:batch_tool_calls|min:3_per_turn
+  A:reading_files_one_by_one_in_parent⇒spawn_subagent
+  A:sequential_turns_on_same_topic>3⇒delegate_immediately
+  A:pasting_full_logs_into_parent⇒summarize_or_rlm
+```
+
+**5 skills included:**
+
+| Skill | What it does | DeepSeek-TUI feature it leverages |
+|-------|-------------|-----------------------------------|
+| `session-guardian` | Context budget enforcement, auto-delegation triggers, compaction rules | Context tracking, `/compact` |
+| `coordinator` | Decomposes tasks into parallel sub-agent workstreams | `agent_spawn`, `agent_wait`, RLM |
+| `imprint` | Learns how you work, builds portable behavioral profile (`.dna.md`) | User memory system |
+| `code-review` | Batch code review with severity classification | RLM (`llm_query_batched`) |
+| `project-init` | Bootstraps project with behavioral definitions from a short interview | `.deepseek/instructions.md` |
+
+**SOUL.md template** (in `templates/`): drop-in behavioral definition file for `.deepseek/instructions.md`. Pre-built blocks for Python, TypeScript, Rust, and Go projects.
 
 ---
 

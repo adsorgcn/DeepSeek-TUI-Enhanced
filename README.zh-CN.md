@@ -1,6 +1,8 @@
-# DeepSeek TUI
+# DeepSeek TUI — 增强版
 
-> **面向 [DeepSeek V4](https://platform.deepseek.com) 的终端原生编程智能体：100 万 token 上下文、思考模式流式推理、前缀缓存感知。自包含 Rust 二进制发布——开箱即带 MCP 客户端、沙箱和持久化任务队列。**
+> **面向 [DeepSeek V4](https://platform.deepseek.com) 的终端编程智能体 —— 用结构化行为定义让会话更持久、子智能体协作更精准、每条指令更省 token。**
+
+本项目是 [Hmbown/DeepSeek-TUI](https://github.com/Hmbown/DeepSeek-TUI) 的增强分支。针对 DeepSeek-TUI 的子智能体调度、RLM 批量推理、百万 token 上下文管理等独有能力，新增 5 个结构化行为技能和项目模板。
 
 [English README](README.md)
 
@@ -63,6 +65,42 @@ DeepSeek TUI 是一个完全运行在终端里的编程智能体。它让 DeepSe
 - **多语言 UI** —— 支持 `en`、`ja`、`zh-Hans`、`pt-BR`，支持自动检测
 - **实时成本跟踪** —— 按轮次和会话统计 token 用量与成本估算，含缓存命中/未命中明细
 - **技能系统** —— 可通过 GitHub 安装的组合式指令包，无需后端服务
+
+### 增强版新增内容
+
+原版内置 1 个技能（skill-creator，421 行自然语言）。增强版新增 5 个结构化行为技能 —— 同样的意图，token 消耗减少约 60%。在上下文紧张时这是决定性优势。
+
+**自然语言写法（8 行）：**
+```
+上下文到 60% 时建议压缩。到 75% 时强制压缩。绝不能让上下文到 90%。
+不要在父会话里逐个读文件，派子智能体去做。不要把完整日志贴进父会话。
+压缩后验证任务定义和决策是否保留。批量调用工具，一轮至少 3 个。
+同一个话题连续超过 3 轮就必须委派。
+```
+
+**结构化行为定义（同样的规则）：**
+```
+::GENE{context_budget|conf:confirmed|scope:global|priority:P0}
+  T:at_60pct⇒suggest_/compact_to_user
+  T:at_75pct⇒force_compact_before_next_tool_call
+  T:never_let_context_hit_90pct
+  T:batch_tool_calls|min:3_per_turn
+  A:reading_files_one_by_one_in_parent⇒spawn_subagent
+  A:sequential_turns_on_same_topic>3⇒delegate_immediately
+  A:pasting_full_logs_into_parent⇒summarize_or_rlm
+```
+
+**5 个技能：**
+
+| 技能 | 功能 | 利用的 DeepSeek-TUI 能力 |
+|------|------|--------------------------|
+| `session-guardian` | 上下文预算管理、自动委派触发、压缩规则 | 上下文追踪、`/compact` |
+| `coordinator` | 将任务拆分为并行子智能体工作流 | `agent_spawn`、`agent_wait`、RLM |
+| `imprint` | 学习你的工作方式，构建可移植行为档案（`.dna.md`） | 用户记忆系统 |
+| `code-review` | 按严重程度分类的批量代码审查 | RLM（`llm_query_batched`） |
+| `project-init` | 通过简短对话生成项目行为定义 | `.deepseek/instructions.md` |
+
+**SOUL.md 模板**（位于 `templates/`）：直接放入 `.deepseek/instructions.md` 的行为定义文件。内含 Python、TypeScript、Rust、Go 四种项目预置模板。
 
 ---
 
