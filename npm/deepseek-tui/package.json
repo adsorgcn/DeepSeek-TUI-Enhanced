@@ -1,17 +1,17 @@
 {
-  "name": "deepseek-tui",
+  "name": "deepseek-tui-enhanced",
   "version": "0.8.14",
   "deepseekBinaryVersion": "0.8.14",
   "description": "Install and run deepseek and deepseek-tui binaries from GitHub release artifacts.",
-  "author": "Hmbown",
+  "author": "adsorgcn",
   "license": "MIT",
-  "homepage": "https://github.com/Hmbown/DeepSeek-TUI",
+  "homepage": "https://github.com/adsorgcn/DeepSeek-TUI-Enhanced",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Hmbown/DeepSeek-TUI.git"
+    "url": "git+https://github.com/adsorgcn/DeepSeek-TUI-Enhanced.git"
   },
   "bugs": {
-    "url": "https://github.com/Hmbown/DeepSeek-TUI/issues"
+    "url": "https://github.com/adsorgcn/DeepSeek-TUI-Enhanced/issues"
   },
   "keywords": [
     "deepseek",

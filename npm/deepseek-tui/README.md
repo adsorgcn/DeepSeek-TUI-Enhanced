@@ -62,14 +62,14 @@ Prebuilt binaries for the GitHub release are downloaded automatically:
 Other platform/architecture combinations (musl, riscv64, FreeBSD, …) aren't
 shipped as prebuilts. The `postinstall` will exit with a clear error pointing
 you at `cargo install deepseek-tui-cli deepseek-tui --locked` and the full
-[docs/INSTALL.md](https://github.com/Hmbown/DeepSeek-TUI/blob/main/docs/INSTALL.md)
+[docs/INSTALL.md](https://github.com/adsorgcn/DeepSeek-TUI-Enhanced/blob/main/docs/INSTALL.md)
 build-from-source guide.
 
 ## Configuration
 
 - Default binary version comes from `deepseekBinaryVersion` in `package.json`.
 - Set `DEEPSEEK_TUI_VERSION` or `DEEPSEEK_VERSION` to override the release version.
-- Set `DEEPSEEK_TUI_GITHUB_REPO` or `DEEPSEEK_GITHUB_REPO` to override the source repo (defaults to `Hmbown/DeepSeek-TUI`).
+- Set `DEEPSEEK_TUI_GITHUB_REPO` or `DEEPSEEK_GITHUB_REPO` to override the source repo (defaults to `adsorgcn/DeepSeek-TUI-Enhanced`).
 - Set `DEEPSEEK_TUI_FORCE_DOWNLOAD=1` to force download even when the cached binary is already present.
 - Set `DEEPSEEK_TUI_DISABLE_INSTALL=1` to skip install-time download.
 - Set `DEEPSEEK_TUI_OPTIONAL_INSTALL=1` to make the `postinstall` step warn and exit `0` on download/extract errors instead of failing `npm install` (useful in CI matrices).

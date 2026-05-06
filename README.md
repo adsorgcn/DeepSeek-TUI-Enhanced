@@ -64,7 +64,7 @@ It is built around DeepSeek V4 (`deepseek-v4-pro` / `deepseek-v4-flash`), includ
 
 ### What This Fork Adds
 
-The original ships with 1 skill (skill-creator, 421 lines of natural language). This edition adds 5 skills written as structured behavioral definitions — same rules, 35-45% fewer tokens, zero interpretation ambiguity. When context is under pressure, every token matters. See [`benchmarks/token-comparison.md`](benchmarks/token-comparison.md) for concrete numbers.
+The original ships with 1 skill (skill-creator, 421 lines of natural language). This edition adds 5 skills written as structured behavioral definitions — same rules, 35-45% fewer tokens, reduced ambiguity and easier model scanning. When context is under pressure, every token matters. See [`benchmarks/token-comparison.md`](benchmarks/token-comparison.md) for concrete numbers.
 
 **Before (natural language, 8 lines):**
 ```
@@ -114,7 +114,10 @@ See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the full walkthrough.
 ## Quickstart
 
 ```bash
-npm install -g deepseek-tui
+git clone https://github.com/adsorgcn/DeepSeek-TUI-Enhanced.git
+cd DeepSeek-TUI-Enhanced
+cargo install --path crates/cli --locked
+cargo install --path crates/tui --locked
 deepseek --version
 deepseek --model auto
 ```
@@ -153,7 +156,7 @@ Use a fixed model or fixed thinking level when you want repeatable benchmarking,
 
 ### Linux ARM64 (Raspberry Pi, Asahi, Graviton, HarmonyOS PC)
 
-`npm i -g deepseek-tui` works on glibc-based ARM64 Linux from v0.8.8 onward. You can also download prebuilt binaries from the [Releases page](https://github.com/adsorgcn/DeepSeek-TUI-Enhanced/releases) and place them side by side on your `PATH`.
+For glibc-based ARM64 Linux (v0.8.8+), build from source or download prebuilt binaries from the [Releases page](https://github.com/adsorgcn/DeepSeek-TUI-Enhanced/releases) and place them side by side on your `PATH`.
 
 ### China / Mirror-friendly Installation
 
@@ -171,8 +174,8 @@ registry = "sparse+https://mirrors.tuna.tsinghua.edu.cn/crates.io-index/"
 Then install both binaries (the dispatcher delegates to the TUI at runtime):
 
 ```bash
-cargo install deepseek-tui-cli --locked   # provides `deepseek`
-cargo install deepseek-tui     --locked   # provides `deepseek-tui`
+cargo install --path crates/cli --locked   # provides `deepseek`
+cargo install --path crates/tui --locked   # provides `deepseek-tui`
 deepseek --version
 ```
 
@@ -183,7 +186,7 @@ Prebuilt binaries can also be downloaded from [GitHub Releases](https://github.c
 [Scoop](https://scoop.sh) is a Windows package manager. Once installed, run:
 
 ```bash
-scoop install deepseek-tui
+# scoop not available for enhanced fork yet
 ```
 
 

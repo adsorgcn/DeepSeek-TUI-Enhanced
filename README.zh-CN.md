@@ -63,7 +63,7 @@ DeepSeek TUI 是一个完全运行在终端里的编程智能体。它让 DeepSe
 
 ### 增强版新增内容
 
-原版内置 1 个技能（skill-creator，421 行自然语言）。增强版新增 5 个结构化行为技能 -- 同样的规则，token 消耗减少 35-45%，消除解释歧义。上下文紧张时每个 token 都重要。具体数据见 [`benchmarks/token-comparison.md`](benchmarks/token-comparison.md)。
+原版内置 1 个技能（skill-creator，421 行自然语言）。增强版新增 5 个结构化行为技能 -- 同样的规则，token 消耗减少 35-45%，降低解释歧义，提高模型遵循稳定性。上下文紧张时每个 token 都重要。具体数据见 [`benchmarks/token-comparison.md`](benchmarks/token-comparison.md)。
 
 **自然语言写法（8 行）：**
 ```
@@ -110,7 +110,10 @@ DeepSeek TUI 是一个完全运行在终端里的编程智能体。它让 DeepSe
 ## 快速开始
 
 ```bash
-npm install -g deepseek-tui
+git clone https://github.com/adsorgcn/DeepSeek-TUI-Enhanced.git
+cd DeepSeek-TUI-Enhanced
+cargo install --path crates/cli --locked
+cargo install --path crates/tui --locked
 deepseek --version
 deepseek
 ```
@@ -134,7 +137,7 @@ deepseek doctor                          # 验证安装
 
 ### Linux ARM64（HarmonyOS 轻薄本、openEuler、Kylin、树莓派、Graviton 等）
 
-从 v0.8.8 起，`npm i -g deepseek-tui` 直接支持 glibc 系的 ARM64 Linux。你也可以从 [Releases 页面](https://github.com/adsorgcn/DeepSeek-TUI-Enhanced/releases) 下载预编译二进制，放到 `PATH` 目录中。
+从 v0.8.8 起支持 glibc 系的 ARM64 Linux。可以从源码构建或从 [Releases 页面](https://github.com/adsorgcn/DeepSeek-TUI-Enhanced/releases) 下载预编译二进制，放到 `PATH` 目录中。
 
 ### 中国大陆 / 镜像友好安装
 
@@ -152,8 +155,8 @@ registry = "sparse+https://mirrors.tuna.tsinghua.edu.cn/crates.io-index/"
 然后安装两个二进制（调度器在运行时会调用 TUI）：
 
 ```bash
-cargo install deepseek-tui-cli --locked   # 提供推荐入口 `deepseek`
-cargo install deepseek-tui     --locked   # 提供交互式 TUI 伴随二进制
+cargo install --path crates/cli --locked   # 提供推荐入口 `deepseek`
+cargo install --path crates/tui --locked   # 提供交互式 TUI 伴随二进制
 deepseek --version
 ```
 
@@ -164,7 +167,7 @@ deepseek --version
 [Scoop](https://scoop.sh) 是一个 Windows 软件包管理器。安装好 Scoop 后，运行：
 
 ```bash
-scoop install deepseek-tui
+# scoop not available for enhanced fork yet
 ```
 
 

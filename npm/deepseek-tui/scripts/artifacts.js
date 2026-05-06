@@ -56,12 +56,12 @@ function unsupportedBuildHint() {
     "",
     "Or build from a checkout:",
     "",
-    "  git clone https://github.com/Hmbown/DeepSeek-TUI.git",
+    "  git clone https://github.com/adsorgcn/DeepSeek-TUI-Enhanced.git",
     "  cd DeepSeek-TUI",
     "  cargo install --path crates/cli --locked",
     "  cargo install --path crates/tui --locked",
     "",
-    "See https://github.com/Hmbown/DeepSeek-TUI/blob/main/docs/INSTALL.md",
+    "See https://github.com/adsorgcn/DeepSeek-TUI-Enhanced/blob/main/docs/INSTALL.md",
     "for cross-compilation, mirror, and Linux ARM64 specifics.",
   ].join("\n");
 }
@@ -70,7 +70,7 @@ function executableName(base, platform) {
   return platform === "win32" ? `${base}.exe` : base;
 }
 
-function releaseBaseUrl(version, repo = "Hmbown/DeepSeek-TUI") {
+function releaseBaseUrl(version, repo = "adsorgcn/DeepSeek-TUI-Enhanced") {
   const override =
     process.env.DEEPSEEK_TUI_RELEASE_BASE_URL || process.env.DEEPSEEK_RELEASE_BASE_URL;
   if (override) {
@@ -80,11 +80,11 @@ function releaseBaseUrl(version, repo = "Hmbown/DeepSeek-TUI") {
   return `https://github.com/${repo}/releases/download/v${version}/`;
 }
 
-function releaseAssetUrl(baseName, version, repo = "Hmbown/DeepSeek-TUI") {
+function releaseAssetUrl(baseName, version, repo = "adsorgcn/DeepSeek-TUI-Enhanced") {
   return new URL(baseName, releaseBaseUrl(version, repo)).toString();
 }
 
-function checksumManifestUrl(version, repo = "Hmbown/DeepSeek-TUI") {
+function checksumManifestUrl(version, repo = "adsorgcn/DeepSeek-TUI-Enhanced") {
   return releaseAssetUrl(CHECKSUM_MANIFEST, version, repo);
 }
 
