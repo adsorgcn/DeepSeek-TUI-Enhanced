@@ -1,6 +1,8 @@
-# DeepSeek TUI
+# DeepSeek TUI — 增强版
 
-> **面向 [DeepSeek V4](https://platform.deepseek.com) 的终端原生编程智能体：100 万 token 上下文、思考模式流式推理、前缀缓存感知。自包含 Rust 二进制发布——开箱即带 MCP 客户端、沙箱和持久化任务队列。**
+> **面向 [DeepSeek V4](https://platform.deepseek.com) 的终端原生编程智能体 —— 内置 48 个生产级技能包、行为 DNA 模板和结构化指令协议。从 demo 到生产所需的一切。**
+
+本项目是 [Hmbown/DeepSeek-TUI](https://github.com/Hmbown/DeepSeek-TUI) 的增强分支。原版内置 1 个技能，增强版内置 48 个。
 
 [English README](README.md)
 
@@ -63,6 +65,45 @@ DeepSeek TUI 是一个完全运行在终端里的编程智能体。它让 DeepSe
 - **多语言 UI** —— 支持 `en`、`ja`、`zh-Hans`、`pt-BR`，支持自动检测
 - **实时成本跟踪** —— 按轮次和会话统计 token 用量与成本估算，含缓存命中/未命中明细
 - **技能系统** —— 可通过 GitHub 安装的组合式指令包，无需后端服务
+
+### 增强版：新增内容
+
+本分支在原版基础上新增三层能力：
+
+**48 个社区技能包**（位于 `crates/tui/assets/skills/`）
+
+覆盖完整开发生命周期的生产级技能：
+
+| 分类 | 技能 |
+|------|------|
+| 规划 | `plan-breakdown` 任务拆解、`plan-estimate` 工时估算、`plan-priority` 优先级、`plan-risk` 风险评估、`project-roadmap` 路线图 |
+| 构建 | `build-feature` 功能开发、`build-scaffold` 脚手架、`build-ui` 界面构建、`env-setup` 环境搭建、`deploy-vps` VPS部署、`deploy-cf-workers` CF Worker部署 |
+| 调试 | `fix-auto` 自动修复、`fix-explain` 错误解释、`fix-guide` 修复引导、`fix-observe` 观察分析、`fix-reason` 推理定位、`fix-solve` 解决方案 |
+| 质量 | `auto-quality` 自动质检、`full-review` 完整审查、`security` 安全检查、`performance` 性能优化 |
+| 学习 | `learn-mistake` 错误学习、`learn-pattern` 模式识别、`learn-preference` 偏好学习、`user-level-detect` 用户水平检测 |
+| 沟通 | `understand-intent` 意图理解、`clarify-scope` 范围确认、`ask-smart` 智能提问、`cost-explain` 成本解释 |
+| 运维 | `run-on-server` 服务器执行、`domain-bind` 域名绑定、`file-transfer` 文件传输、`go-live` 上线检查 |
+| 工作流 | `session-start` 会话启动、`daily-summary` 日报、`progress-report` 进度报告、`memory` 记忆、`compress` 压缩 |
+| 行为 | `imprint` —— 学习你的工作方式，构建跨会话的便携行为档案 |
+
+每个技能使用结构化行为定义（`::GENE{}` 语法），零歧义指令。智能体读取后直接理解意图并执行。
+
+**SOUL.md 行为定义模板**（位于 `templates/SOUL.md`）
+
+定义智能体思考和行为方式的文件。放在项目根目录，智能体启动时自动加载。
+
+```
+::GENE{communication|conf:confirmed|scope:global}
+  T:conclusions_first
+  T:code_over_explanation|when:implementation
+  A:walls_of_text⇒rewrite_shorter
+```
+
+内含后端、前端、DevOps、数据工程四套预置行为基因库。
+
+**Imprint 行为 DNA 数据集**（位于 `templates/imprint-data/`）
+
+50+ 条行为基因定义训练数据。可作为编写 `SOUL.md` 的参考，也可配合 `imprint` 技能实现自动行为画像。
 
 ---
 
