@@ -493,7 +493,7 @@
     <p>如果从 GitHub 或 npm 下载较慢，请按以下方式选择最适合你的安装路径：</p>
 
     <details open>
-      <summary>npm + 淘宝镜像（推荐，最简单）</summary>
+      <summary>npm + 淘宝镜像（安装的是上游包，非本增强分支）</summary>
       <p>设置 npm 镜像后全局安装：</p>
       <pre><code>npm config set registry https://registry.npmmirror.com
 npm install -g deepseek-tui</code></pre>
@@ -503,7 +503,7 @@ npm install -g deepseek-tui</code></pre>
     </details>
 
     <details>
-      <summary>Cargo + 清华 TUNA 镜像</summary>
+      <summary>Cargo + 清华 TUNA 镜像（安装的是上游 crate，非本增强分支）</summary>
       <p>在 <code>~/.cargo/config.toml</code> 中添加镜像配置：</p>
       <pre><code>[source.crates-io]
 replace-with = "tuna"
