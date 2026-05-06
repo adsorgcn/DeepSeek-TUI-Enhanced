@@ -11,13 +11,21 @@ Only the latest stable release receives security patches. No backports to older 
 | latest stable | :white_check_mark: |
 | < latest | :x: |
 
-Check the [releases page](https://github.com/Hmbown/DeepSeek-TUI/releases) for the current version.
+Check the [releases page](https://github.com/adsorgcn/DeepSeek-TUI-Enhanced/releases) for the current version.
 
 ## Reporting a Vulnerability
 
 **Do not open a public GitHub issue for security vulnerabilities.**
 
-Report privately via one of:
+### For issues in the Enhanced skill layer (this fork's additions)
+
+Report via [GitHub private advisory](https://github.com/adsorgcn/DeepSeek-TUI-Enhanced/security/advisories/new) on this repository.
+
+Enhanced-layer scope: `crates/tui/assets/skills/`, `crates/tui/src/skills/system.rs`, `templates/`, `benchmarks/`.
+
+### For issues in the original runtime (inherited from upstream)
+
+The original DeepSeek-TUI runtime is maintained by Hmbown. Report upstream runtime vulnerabilities to:
 
 - **Email**: [hmbown.dev@gmail.com](mailto:hmbown.dev@gmail.com) — include `[SECURITY]` in the subject line
 - **GitHub private advisory**: [github.com/Hmbown/DeepSeek-TUI/security/advisories/new](https://github.com/Hmbown/DeepSeek-TUI/security/advisories/new)

@@ -132,16 +132,16 @@ is fastest from your network.
 ## 4. Manual download from GitHub Releases
 
 Grab the matching pair of binaries for your platform from the
-[Releases page](https://github.com/Hmbown/DeepSeek-TUI/releases) and drop them
+[Releases page](https://github.com/adsorgcn/DeepSeek-TUI-Enhanced/releases) and drop them
 side by side into a directory on your `PATH` (e.g. `~/.local/bin`):
 
 ```bash
 # Linux ARM64 example
 mkdir -p ~/.local/bin
 curl -L -o ~/.local/bin/deepseek      \
-    https://github.com/Hmbown/DeepSeek-TUI/releases/latest/download/deepseek-linux-arm64
+    https://github.com/adsorgcn/DeepSeek-TUI-Enhanced/releases/latest/download/deepseek-linux-arm64
 curl -L -o ~/.local/bin/deepseek-tui  \
-    https://github.com/Hmbown/DeepSeek-TUI/releases/latest/download/deepseek-tui-linux-arm64
+    https://github.com/adsorgcn/DeepSeek-TUI-Enhanced/releases/latest/download/deepseek-tui-linux-arm64
 chmod +x ~/.local/bin/deepseek ~/.local/bin/deepseek-tui
 deepseek --version
 ```
@@ -150,7 +150,7 @@ Verify integrity against the per-release SHA-256 manifest:
 
 ```bash
 curl -L -o /tmp/deepseek-artifacts-sha256.txt \
-    https://github.com/Hmbown/DeepSeek-TUI/releases/latest/download/deepseek-artifacts-sha256.txt
+    https://github.com/adsorgcn/DeepSeek-TUI-Enhanced/releases/latest/download/deepseek-artifacts-sha256.txt
 ( cd ~/.local/bin && sha256sum -c /tmp/deepseek-artifacts-sha256.txt --ignore-missing )
 ```
 
@@ -177,8 +177,8 @@ LoongArch, FreeBSD, and pre-2024 ARM64 distros.
 ### Build and install
 
 ```bash
-git clone https://github.com/Hmbown/DeepSeek-TUI.git
-cd DeepSeek-TUI
+git clone https://github.com/adsorgcn/DeepSeek-TUI-Enhanced.git
+cd DeepSeek-TUI-Enhanced
 
 cargo install --path crates/cli --locked   # provides `deepseek`
 cargo install --path crates/tui --locked   # provides `deepseek-tui`
@@ -280,8 +280,8 @@ that session and run `cargo build` from the project root.
 **Build**
 
 ```bash
-git clone https://github.com/Hmbown/DeepSeek-TUI.git
-cd DeepSeek-TUI
+git clone https://github.com/adsorgcn/DeepSeek-TUI-Enhanced.git
+cd DeepSeek-TUI-Enhanced
 set CARGO_HTTP_CHECK_REVOKE=false   # may be needed behind some Chinese ISPs
 cargo build --release
 ```
@@ -316,7 +316,7 @@ cargo install deepseek-tui     --locked
 
 ### `deepseek update` reports `no asset found for platform deepseek-linux-aarch64`
 
-This is [#503](https://github.com/Hmbown/DeepSeek-TUI/issues/503) in v0.8.7 —
+This is [#503](https://github.com/adsorgcn/DeepSeek-TUI-Enhanced/issues/503) in v0.8.7 —
 the self-updater used Rust's `aarch64`/`x86_64` arch names instead of the
 release artifact's `arm64`/`x64`. Workaround until v0.8.8:
 

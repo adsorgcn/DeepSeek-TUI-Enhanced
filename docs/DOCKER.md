@@ -1,7 +1,7 @@
 # Docker
 
 DeepSeek TUI ships an official multi-arch Docker image (amd64 + arm64) on
-[GitHub Container Registry](https://github.com/Hmbown/DeepSeek-TUI/pkgs/container/deepseek-tui).
+[GitHub Container Registry](https://github.com/adsorgcn/DeepSeek-TUI-Enhanced/pkgs/container/deepseek-tui).
 
 ## Quick start
 
@@ -9,7 +9,7 @@ DeepSeek TUI ships an official multi-arch Docker image (amd64 + arm64) on
 docker run --rm -it \
   -e DEEPSEEK_API_KEY="$DEEPSEEK_API_KEY" \
   -v ~/.deepseek:/home/deepseek/.deepseek \
-  ghcr.io/hmbown/deepseek-tui:latest
+  ghcr.io/adsorgcn/deepseek-tui-enhanced:latest
 ```
 
 Images are published to GitHub Container Registry (GHCR) only. Docker Hub
@@ -42,7 +42,7 @@ When stdin is not a TTY, `deepseek` drops to the dispatcher's one-shot mode
 
 ```bash
 echo "Explain the Cargo.toml in structured English." | \
-  docker run --rm -i -e DEEPSEEK_API_KEY ghcr.io/hmbown/deepseek-tui:latest
+  docker run --rm -i -e DEEPSEEK_API_KEY ghcr.io/adsorgcn/deepseek-tui-enhanced:latest
 ```
 
 ## Building locally

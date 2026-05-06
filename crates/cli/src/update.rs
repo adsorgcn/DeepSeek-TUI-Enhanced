@@ -1,7 +1,7 @@
 //! Self-update for the `deepseek` binary.
 //!
 //! The `update` subcommand fetches the latest release from
-//! `github.com/Hmbown/DeepSeek-TUI/releases/latest`, downloads the
+//! `github.com/adsorgcn/DeepSeek-TUI-Enhanced/releases/latest`, downloads the
 //! platform-correct binary, verifies its SHA256 checksum, and atomically
 //! replaces the currently running binary.
 
@@ -142,7 +142,7 @@ struct Asset {
 
 /// Fetch the latest release metadata from GitHub.
 fn fetch_latest_release() -> Result<Release> {
-    let url = "https://api.github.com/repos/Hmbown/DeepSeek-TUI/releases/latest";
+    let url = "https://api.github.com/repos/adsorgcn/DeepSeek-TUI-Enhanced/releases/latest";
     let output = Command::new("curl")
         .args([
             "-sSfL",
