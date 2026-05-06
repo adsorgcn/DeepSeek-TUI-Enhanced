@@ -75,7 +75,7 @@ function buildFromSourceHint() {
     "Or build from a checkout:",
     "",
     "  git clone https://github.com/adsorgcn/DeepSeek-TUI-Enhanced.git",
-    "  cd DeepSeek-TUI",
+    "  cd DeepSeek-TUI-Enhanced",
     "  cargo install --path crates/cli --locked",
     "  cargo install --path crates/tui --locked",
     "",

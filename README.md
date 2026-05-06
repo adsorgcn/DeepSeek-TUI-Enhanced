@@ -29,8 +29,11 @@ cp -r DeepSeek-TUI-Enhanced/crates/tui/assets/skills/* ~/.deepseek/skills/
 > Forked from [Hmbown/DeepSeek-TUI](https://github.com/Hmbown/DeepSeek-TUI).
 > The original runtime, TUI, and tool suite are theirs.
 > The structured behavioral skill layer is ours.
+>
+> **Note:** This fork provides the same `deepseek` and `deepseek-tui` command names.
+> Installing from source will override an existing upstream installation.
 
-[![CI](https://github.com/Hmbown/DeepSeek-TUI/actions/workflows/ci.yml/badge.svg)](https://github.com/Hmbown/DeepSeek-TUI/actions/workflows/ci.yml)
+[![CI](https://github.com/adsorgcn/DeepSeek-TUI-Enhanced/actions/workflows/ci.yml/badge.svg)](https://github.com/adsorgcn/DeepSeek-TUI-Enhanced/actions/workflows/ci.yml)
 
 ![DeepSeek TUI screenshot](assets/screenshot.png)
 
@@ -201,7 +204,7 @@ Works on any Tier-1 Rust target — including musl, riscv64, FreeBSD, and older 
 #   sudo dnf install -y gcc make pkgconf-pkg-config dbus-devel
 
 git clone https://github.com/adsorgcn/DeepSeek-TUI-Enhanced.git
-cd DeepSeek-TUI
+cd DeepSeek-TUI-Enhanced
 
 cargo install --path crates/cli --locked   # requires Rust 1.88+; provides `deepseek`
 cargo install --path crates/tui --locked   # provides `deepseek-tui`

@@ -29,8 +29,11 @@ cp -r DeepSeek-TUI-Enhanced/crates/tui/assets/skills/* ~/.deepseek/skills/
 > 基于 [Hmbown/DeepSeek-TUI](https://github.com/Hmbown/DeepSeek-TUI) 分支。
 > 原版运行时、TUI 和工具集归原作者所有。
 > 结构化行为技能层是本项目的增量贡献。
+>
+> **注意：** 本分支提供相同的 `deepseek` 和 `deepseek-tui` 命令名。
+> 从源码安装会覆盖已有的原版安装。
 
-[![CI](https://github.com/Hmbown/DeepSeek-TUI/actions/workflows/ci.yml/badge.svg)](https://github.com/Hmbown/DeepSeek-TUI/actions/workflows/ci.yml)
+[![CI](https://github.com/adsorgcn/DeepSeek-TUI-Enhanced/actions/workflows/ci.yml/badge.svg)](https://github.com/adsorgcn/DeepSeek-TUI-Enhanced/actions/workflows/ci.yml)
 
 ![DeepSeek TUI 截图](assets/screenshot.png)
 
@@ -182,7 +185,7 @@ deepseek --version
 #   sudo dnf install -y gcc make pkgconf-pkg-config dbus-devel
 
 git clone https://github.com/adsorgcn/DeepSeek-TUI-Enhanced.git
-cd DeepSeek-TUI
+cd DeepSeek-TUI-Enhanced
 
 cargo install --path crates/cli --locked   # 需要 Rust 1.88+；提供 `deepseek`
 cargo install --path crates/tui --locked   # 提供 `deepseek-tui`

@@ -228,21 +228,16 @@ jobs:
           body: |
             ## Install
 
-            ### Recommended — npm (one command, both binaries)
+            ### Recommended — source install
 
             ```bash
-            # See https://github.com/adsorgcn/DeepSeek-TUI-Enhanced for install
+            git clone https://github.com/adsorgcn/DeepSeek-TUI-Enhanced.git
+            cd DeepSeek-TUI-Enhanced
+            cargo install --path crates/cli --locked
+            cargo install --path crates/tui --locked
             ```
 
-            The wrapper downloads both binaries from this Release and places them in the same directory.
-
-            ### Cargo (Linux / macOS)
-
-            ```bash
-            cargo install deepseek-tui-cli deepseek-tui --locked
-            ```
-
-            Both crates are required — `deepseek-tui-cli` produces the `deepseek` dispatcher and `deepseek-tui` produces the interactive runtime that the dispatcher delegates to. Installing only one binary will fail at runtime with a `MISSING_COMPANION_BINARY` error.
+            Both binaries are required — `deepseek` (dispatcher) and `deepseek-tui` (interactive runtime).
 
             ### Manual download
 
