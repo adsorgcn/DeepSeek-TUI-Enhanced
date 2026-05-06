@@ -61,7 +61,7 @@ Prebuilt binaries for the GitHub release are downloaded automatically:
 
 Other platform/architecture combinations (musl, riscv64, FreeBSD, …) aren't
 shipped as prebuilts. The `postinstall` will exit with a clear error pointing
-you at `cargo install deepseek-tui-cli deepseek-tui --locked` and the full
+you at building from source and the full
 [docs/INSTALL.md](https://github.com/adsorgcn/DeepSeek-TUI-Enhanced/blob/main/docs/INSTALL.md)
 build-from-source guide.
 
