@@ -108,3 +108,60 @@ Procedural instructions with many steps compress less.
   check GENE anti-patterns before allowing tool execution
 - Cross-session behavioral DNA: `.dna.md` profiles that evolve across
   projects and sessions
+
+---
+
+## Distribution ownership
+
+| Channel | Owner | Status |
+|---------|-------|--------|
+| GitHub releases | This fork (adsorgcn) | Active, v0.1.0 published |
+| npm (`deepseek-tui-enhanced`) | This fork | Package metadata ready, not yet published to registry |
+| Docker (GHCR) | This fork | Workflow configured, not yet publishing images |
+| Website (`website/`) | This fork | Included in repo, links point to fork |
+| crates.io (`deepseek-tui-cli`, `deepseek-tui`) | Upstream (Hmbown) | Not published by this fork |
+| Homebrew tap | Upstream (Hmbown) | Not maintained by this fork |
+| Scoop | Neither | Not available |
+
+## Runtime modification boundary
+
+This fork modifies exactly **one** Rust source file from upstream:
+
+| File | Change | Reason |
+|------|--------|--------|
+| `crates/tui/src/skills/system.rs` | Replaced single-skill installer with multi-skill installer | Auto-install 6 system skills on first launch |
+
+All other Rust source changes are **reference updates only** (URLs, UA strings,
+help text pointing to this fork instead of upstream). No runtime logic,
+protocol handling, tool execution, or TUI rendering code is modified.
+
+Everything else in the Enhanced layer is additive:
+- `crates/tui/assets/skills/` — 5 new skill files
+- `templates/` — SOUL.md template
+- `benchmarks/` — token comparison data
+- `ENHANCED.md`, `NOTICE.md` — governance and attribution docs
+
+## Upstream sync strategy
+
+This fork tracks upstream `Hmbown/DeepSeek-TUI` main branch.
+
+**Sync method:** Selective manual merge.
+
+**When to sync:**
+- Upstream publishes a new stable release
+- Upstream fixes a security vulnerability
+- Upstream adds features that benefit Enhanced users
+
+**What to watch during sync:**
+- `crates/tui/src/skills/system.rs` — our only modified Rust file.
+  If upstream changes this file, manual conflict resolution is needed.
+- `crates/tui/assets/skills/` — if upstream adds new bundled skills,
+  we add them to our `SYSTEM_SKILLS` array.
+- Skill format changes — if upstream changes how SKILL.md is parsed
+  (`crates/tui/src/skills/mod.rs`), verify our skills still load.
+
+**What never syncs:**
+- Upstream's npm package identity (we have our own)
+- Upstream's release workflow (we have our own)
+- Upstream's SECURITY.md contacts (we have our own boundary)
+

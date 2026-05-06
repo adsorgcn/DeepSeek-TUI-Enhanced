@@ -1,5 +1,7 @@
 # Changelog
 
+> **Note:** This changelog is inherited from the upstream [Hmbown/DeepSeek-TUI](https://github.com/Hmbown/DeepSeek-TUI) project and documents the original runtime's version history. For changes specific to the Enhanced fork (skills, templates, system installer), see [ENHANCED.md](ENHANCED.md).
+
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
