@@ -1,9 +1,14 @@
 # Docker
 
-DeepSeek TUI ships an official multi-arch Docker image (amd64 + arm64) on
-[GitHub Container Registry](https://github.com/adsorgcn/DeepSeek-TUI-Enhanced/pkgs/container/deepseek-tui).
+> **Status:** Docker images for this Enhanced fork are **not yet published**.
+> The release workflow is configured to build and push to GHCR, but no images
+> have been published yet. The commands below will work once images are available.
+> To run the Enhanced fork now, [build from source](../README.md#install).
 
-## Quick start
+The release workflow is configured to produce a multi-arch Docker image (amd64 + arm64) on
+[GitHub Container Registry](https://github.com/adsorgcn/DeepSeek-TUI-Enhanced/pkgs/container/deepseek-tui-enhanced).
+
+## Quick start (available after first release with Docker artifacts)
 
 ```bash
 docker run --rm -it \

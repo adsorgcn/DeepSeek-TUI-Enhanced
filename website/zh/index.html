@@ -442,7 +442,7 @@
       </div>
       <div class="terminal-body">
         <span class="prompt">$</span>
-        <span>npm i -g deepseek-tui</span>
+        <span>git clone https://github.com/adsorgcn/DeepSeek-TUI-Enhanced</span>
         <span class="cursor"></span>
         <button class="btn-copy" onclick="copyInstall()" id="copyBtn">复制</button>
       </div>
@@ -562,7 +562,7 @@ chmod +x ~/.local/bin/deepseek ~/.local/bin/deepseek-tui</code></pre>
 
 <script>
   function copyInstall() {
-    navigator.clipboard.writeText('npm i -g deepseek-tui').then(() => {
+    navigator.clipboard.writeText('git clone https://github.com/adsorgcn/DeepSeek-TUI-Enhanced.git && cd DeepSeek-TUI-Enhanced && cargo install --path crates/cli --path crates/tui --locked').then(() => {
       const btn = document.getElementById('copyBtn');
       btn.textContent = '已复制';
       btn.classList.add('copied');

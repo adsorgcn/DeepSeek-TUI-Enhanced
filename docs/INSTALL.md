@@ -1,4 +1,10 @@
-# Installing DeepSeek TUI
+# Installing DeepSeek TUI Enhanced
+
+> **Distribution ownership note:**
+> This fork's own distribution channels are **GitHub Releases** and **build from source**.
+> The `npm install -g deepseek-tui` and `cargo install deepseek-tui-cli` commands install
+> the **upstream** package from Hmbown's registry, not this Enhanced fork.
+> To get the Enhanced skill layer, use the source build path below or copy skills manually.
 
 This page covers every supported install path and the most common
 "it didn't install" failures, including **Linux ARM64** and other less
@@ -39,7 +45,7 @@ platform/architecture combinations from v0.8.8 onward:
 
 ---
 
-## 2. Install via npm (recommended)
+## 2. Install via npm (upstream package, not this fork)
 
 ```bash
 npm install -g deepseek-tui
@@ -72,7 +78,7 @@ Useful environment variables:
 
 ---
 
-## 3. Install via Cargo (any Tier-1 Rust target)
+## 3. Install via Cargo (upstream crates, not this fork)
 
 If GitHub releases are slow, blocked, or you're on an unsupported architecture,
 install from crates.io directly. Both crates are required — the dispatcher

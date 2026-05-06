@@ -454,7 +454,7 @@
       </div>
       <div class="terminal-body">
         <span class="prompt">$</span>
-        <span>npm i -g deepseek-tui</span>
+        <span>git clone https://github.com/adsorgcn/DeepSeek-TUI-Enhanced</span>
         <span class="cursor"></span>
         <button class="btn-copy" onclick="copyInstall()" id="copyBtn">Copy</button>
       </div>
@@ -505,7 +505,7 @@
     <p>If downloads from GitHub or npm are slow from mainland China, use one of these paths:</p>
 
     <details open>
-      <summary>npm via 淘宝镜像 (fastest)</summary>
+      <summary>npm via 淘宝镜像 (installs upstream package, not this fork)</summary>
       <pre><code>npm config set registry https://registry.npmmirror.com
 npm install -g deepseek-tui</code></pre>
       <p style="font-size:0.85rem;margin-bottom:0;">The npm wrapper itself will still download the binary from GitHub Releases during <code>postinstall</code>. If that step is slow, set a mirror for the binary download:</p>
@@ -514,7 +514,7 @@ npm install -g deepseek-tui</code></pre>
     </details>
 
     <details>
-      <summary>Cargo via 清华 TUNA mirror</summary>
+      <summary>Cargo via 清华 TUNA mirror (installs upstream crates, not this fork)</summary>
       <p>Add to <code>~/.cargo/config.toml</code>:</p>
       <pre><code>[source.crates-io]
 replace-with = "tuna"
@@ -555,7 +555,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh</code></pre>
 
 <script>
   function copyInstall() {
-    navigator.clipboard.writeText('npm i -g deepseek-tui').then(() => {
+    navigator.clipboard.writeText('git clone https://github.com/adsorgcn/DeepSeek-TUI-Enhanced.git && cd DeepSeek-TUI-Enhanced && cargo install --path crates/cli --path crates/tui --locked').then(() => {
       const btn = document.getElementById('copyBtn');
       btn.textContent = 'Copied';
       btn.classList.add('copied');
