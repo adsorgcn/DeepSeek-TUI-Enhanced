@@ -1,8 +1,6 @@
-# DeepSeek TUI — Enhanced Edition
+# DeepSeek TUI
 
-> Terminal coding agent for DeepSeek V4 — now with **48 production-ready skills**, behavioral DNA templates, and structured instruction protocol. Everything the original needs to go from demo to production.
-
-This is an enhanced fork of [Hmbown/DeepSeek-TUI](https://github.com/Hmbown/DeepSeek-TUI). The original ships with 1 skill. This edition ships with 48.
+> Terminal coding agent for DeepSeek V4. It runs from the `deepseek` command, streams reasoning blocks, edits local workspaces with approval gates, and includes an auto mode that chooses both model and thinking level per turn.
 
 [简体中文 README](README.zh-CN.md)
 
@@ -70,45 +68,6 @@ It is built around DeepSeek V4 (`deepseek-v4-pro` / `deepseek-v4-flash`), includ
 - **Localized UI** — `en`, `ja`, `zh-Hans`, `pt-BR` with auto-detection
 - **Live cost tracking** — per-turn and session-level token usage and cost estimates; cache hit/miss breakdown
 - **Skills system** — composable, installable instruction packs from GitHub with no backend service required
-
-### Enhanced Edition: What's Added
-
-This fork adds three layers on top of the original:
-
-**48 Community Skills** (in `crates/tui/assets/skills/`)
-
-Production-ready skill packs covering the full development lifecycle:
-
-| Category | Skills |
-|----------|--------|
-| Planning | `plan-breakdown`, `plan-estimate`, `plan-priority`, `plan-risk`, `project-roadmap` |
-| Building | `build-feature`, `build-scaffold`, `build-ui`, `env-setup`, `deploy-vps`, `deploy-cf-workers`, `deploy-global` |
-| Debugging | `fix-auto`, `fix-explain`, `fix-guide`, `fix-observe`, `fix-reason`, `fix-solve` |
-| Quality | `auto-quality`, `full-review`, `security`, `performance`, `save-rollback` |
-| Learning | `learn-mistake`, `learn-pattern`, `learn-preference`, `user-level-detect` |
-| Communication | `understand-intent`, `clarify-scope`, `ask-smart`, `decision-translate`, `cost-explain` |
-| Operations | `run-on-server`, `domain-bind`, `file-transfer`, `multi-device`, `go-live` |
-| Workflow | `session-start`, `daily-summary`, `progress-report`, `milestone`, `celebrate`, `memory`, `compress` |
-| Behavioral | `imprint` — learns how you work and builds a portable profile across sessions |
-
-Each skill uses structured behavioral definitions (`::GENE{}` syntax) for zero-ambiguity instruction. The agent reads them, understands the intent, and executes accordingly.
-
-**SOUL.md Template** (in `templates/SOUL.md`)
-
-A behavioral definition file that shapes how your agent thinks and acts. Place it in your project root — the agent reads it on session start.
-
-```
-::GENE{communication|conf:confirmed|scope:global}
-  T:conclusions_first
-  T:code_over_explanation|when:implementation
-  A:walls_of_text⇒rewrite_shorter
-```
-
-Pre-built gene libraries included for backend, frontend, devops, and data engineering.
-
-**Imprint Behavioral DNA** (in `templates/imprint-data/`)
-
-Training dataset of 50+ behavioral gene definitions. Use them as reference for writing your own `SOUL.md`, or feed them into the `imprint` skill for automatic behavioral profiling.
 
 ---
 
